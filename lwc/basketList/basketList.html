@@ -1,0 +1,38 @@
+<template>
+    <table style="width:100%">
+        <tr>
+            <th class="slds-p-around_medium">Product Name</th>
+            <th class="slds-p-around_medium">Product Category</th>
+            <th class="slds-p-around_medium">Product Quantity</th>
+            <th class="slds-p-around_medium">Total Price, $</th>
+            <th class="slds-p-around_medium">Action</th>
+        </tr>
+        <template if:true={mapData}>
+            <template for:each={mapData} for:item="mapKey">
+                <tr key={mapKey.key}>
+                    <template for:each={mapKey.value} for:item="mapKeyKey">
+                        <td class="slds-p-around_medium" key={mapKeyKey.key}>
+                            {mapKeyKey.value}
+                        </td>
+                    </template>
+                    <td>
+                        <lightning-button type="submit"
+                                          label="Clear"
+                                          class="slds-p-around_medium"
+                                          variant="destructive"
+                                          value={mapKey.key}
+                                          onclick={clearBasket}>
+                        </lightning-button>
+                        <lightning-button type="submit"
+                                          label="Buy"
+                                          class="slds-p-around_medium"
+                                          variant="success"
+                                          value={mapKey.key}
+                                          onclick={createOrder}>
+                        </lightning-button>
+                    </td>
+                </tr>
+            </template>
+        </template>
+    </table>
+</template>

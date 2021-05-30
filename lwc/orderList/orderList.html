@@ -1,0 +1,25 @@
+<template>
+    <table style="width:100%">
+        <tr>
+            <th class="slds-p-around_medium">Order Id</th>
+            <th class="slds-p-around_medium">Product Name</th>
+            <th class="slds-p-around_medium">Product Quantity</th>
+            <th class="slds-p-around_medium">Total Price, $</th>
+            <th class="slds-p-around_medium">Ordered by</th>
+        </tr>
+        <template if:true={mapData}>
+            <template for:each={mapData} for:item="mapKey">
+                <tr key={mapKey.key}>
+                    <template for:each={mapKey.value} for:item="mapKeyKey">
+                        <td class="slds-p-around_medium" key={mapKeyKey.key}>
+                            {mapKeyKey.value}
+                        </td>
+                    </template>
+                </tr>
+            </template>
+        </template>
+    </table>
+    <div class="slds-clearfix">
+        <lightning-button class="slds-float_right" variant="destructive" label="Delete All Orders" onclick={deleteAllOrders}></lightning-button>
+    </div>
+</template>

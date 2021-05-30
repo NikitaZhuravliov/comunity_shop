@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-text-heading_large slds-align_absolute-center">
+        <lightning-formatted-text value="Category List"></lightning-formatted-text>
+    </div>
+    <div class="slds-text-heading_medium slds-p-top_large slds-align_absolute-center" style="display:grid">
+        <template if:true={mapData}>
+            <template for:each={mapData} for:item="mapKey">
+                <div key={mapKey.key} class="slds-align_absolute-center">
+                    <lightning-button variant="base" value={mapKey.key} label={mapKey.value} onclick={handleClick}></lightning-button>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

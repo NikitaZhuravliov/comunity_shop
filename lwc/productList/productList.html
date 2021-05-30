@@ -1,0 +1,19 @@
+<template>
+    <template if:true={products}>
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+            <template for:each={products} for:item="product">
+                <lightning-card footer="Card Footer" key={product.Id} title={product.Name} class="slds-size_1-of-3 slds-p-around_medium">
+                    <img class="center" src={product.Product_Picture_URL__c} alt={product.Name}>
+                    <p class="slds-p-around_medium"><span style="font-weight: bold;">Description:</span> {product.Product_Description__c}</p>
+                    <p class="slds-p-around_medium"><span style="font-weight: bold;">Price:</span> {product.Product_Price__c}$</p>
+                    <p class="slds-p-around_medium"><span style="font-weight: bold;">Available Quantity:</span> {product.Product_Quantity__c}</p>
+                    <lightning-record-edit-form class="slds-p-around_medium slds-clearfix slds-gutters" object-api-name="Basket__c" onsuccess={handleSuccess} onerror={handleError}>
+                        <lightning-input-field class="slds-col" field-name="Total_Quantity__c" value=1></lightning-input-field>
+                        <lightning-input-field class="slds-assistive-text slds-col" field-name="Product__c" value={product.Id}></lightning-input-field>
+                        <lightning-button type="submit" label="Add to basket" class="slds-p-around_large slds-float_right slds-col" variant="brand"></lightning-button>
+                    </lightning-record-edit-form>
+                </lightning-card>
+            </template>
+        </div>
+    </template>
+</template>
