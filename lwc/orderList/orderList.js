@@ -19,12 +19,10 @@ export default class OrderList extends LightningElement {
 
                     let newMap = [];
                     for (let key2 in map2) {
-                        if (key2 !== 'basketId' && key2 !== 'productId') {
-                            newMap.push({
-                                value: map2[key2],
-                                key: key2
-                            })
-                        }
+                        newMap.push({
+                            value: map2[key2],
+                            key: key2
+                        })
                     }
 
                     this.mapData.push({
